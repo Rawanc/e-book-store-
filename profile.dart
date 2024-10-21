@@ -18,14 +18,14 @@ class Profile extends StatelessWidget {
           children: [
              CircleAvatar(
               radius: 50, 
-              backgroundColor: Colors.grey[200], 
+              backgroundColor: Colors.grey[200],   
               backgroundImage: AssetImage("assets/18.png"),
               child: ClipOval(
                 child: Image.asset(
                   "assets/18.png",
                   fit: BoxFit.cover, 
-                  width: 100,  
-                  height: 100,     
+                  width: 100, 
+                  height: 100,         
                 )    
               )    
             ),
@@ -33,8 +33,9 @@ class Profile extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 labelText: 'First Name',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(), 
               ),
+               controller: TextEditingController(text: 'Sarah'),
             ),
             SizedBox(height: 10),
             TextField(
@@ -42,6 +43,7 @@ class Profile extends StatelessWidget {
                 labelText: 'Last Name',
                 border: OutlineInputBorder(),
               ),
+               controller: TextEditingController(text: 'Ahmed'),
             ),
             SizedBox(height: 10),
             TextField(
@@ -49,6 +51,7 @@ class Profile extends StatelessWidget {
                 labelText: 'Email',
                 border: OutlineInputBorder(),
               ),
+               controller: TextEditingController(text: 'SarahAhmed@gmail.com'),
               keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(height: 10),
@@ -57,6 +60,7 @@ class Profile extends StatelessWidget {
                 labelText: 'Phone Number',
                 border: OutlineInputBorder(),
               ),
+               controller: TextEditingController(text: '+9665987889999'),
               keyboardType: TextInputType.phone,
             ),
             SizedBox(height: 10),
@@ -102,3 +106,4 @@ class Profile extends StatelessWidget {
     );
   }
 }
+

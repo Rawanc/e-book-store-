@@ -1,10 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-
-
-
-
-
-
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -13,10 +9,96 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text('Profile'),
         backgroundColor: Colors.lightGreen[300],
-        elevation: 15,
       ),
-      body: const Text('Settings'), );
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+             CircleAvatar(
+              radius: 50, 
+              backgroundColor: Colors.grey[200], 
+              backgroundImage: AssetImage("assets/18.png"),
+              child: ClipOval(
+                child: Image.asset(
+                  "assets/18.png",
+                  fit: BoxFit.cover, 
+                  width: 100,  
+                  height: 100,     
+                )    
+              )    
+            ),
+            SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'First Name',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Last Name',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Phone Number',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.phone,
+            ),
+            SizedBox(height: 10),
+            DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                labelText: 'Preferred Language',
+                border: OutlineInputBorder(),
+              ),
+              items: <String>['English', 'Arabic']
+                  .map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {},
+            ),
+            SizedBox(height: 10),
+            DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                labelText: 'Gender',
+                border: OutlineInputBorder(),
+              ),
+              items: <String>['Male', 'Female']
+                  .map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {},
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Handle save action
+              },
+              child: Text('Save'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

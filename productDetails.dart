@@ -1,12 +1,21 @@
-// ignore_for_file: prefer_const_constructors
 
+// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/shoppingCart.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Create the product data that you want to add to the cart
+    final CartItemData product = CartItemData(
+      "assets/1.jpeg", // Image path for Alice in Wonderland
+      "Alice in Wonderland", // Product name
+      59.99, // Product price
+      1, // Quantity
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightGreen[300],
@@ -40,7 +49,6 @@ class ProductDetails extends StatelessWidget {
                 ),
               ),
               
-              // Adding stars and rating
               const SizedBox(height: 10),
               const Row(
                 children: [
@@ -49,14 +57,13 @@ class ProductDetails extends StatelessWidget {
                   Icon(Icons.star, color: Colors.yellow, size: 18),
                   Icon(Icons.star, color: Colors.yellow, size: 18),
                   Icon(Icons.star, color: Colors.yellow, size: 18),
-                  SizedBox(width: 10), // Space between stars and rating text
+                  SizedBox(width: 10),
                   Text(
                     '(27+ Rating)',
                     style: TextStyle(fontSize: 14),
                   ),
                 ],
               ),
-
               const SizedBox(height: 10),
               Text(
                 'SAR 59.99',
@@ -82,6 +89,7 @@ class ProductDetails extends StatelessWidget {
                 style: TextStyle(fontSize: 18),
               ),
               const SizedBox(height: 20),
+
 
               // Product Details - Updated to match requested format without box
               const Row(
@@ -128,26 +136,33 @@ class ProductDetails extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 30),
-
+              
               // Add to cart button
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.lightGreen[400],
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
                   onPressed: () {
-                    // Handle adding to cart
+                    // Navigate to ShoppingCart and pass the product information
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ShoppingCart(itemToAdd: product),
+                      ),
+                    );
                   },
                   child: const Row(
-                    mainAxisSize: MainAxisSize.min, // To make the button width fit its content
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.shopping_cart, color: Colors.black, size: 24), // Shopping cart icon
-                      SizedBox(width: 10), // Space between icon and text
+                      Icon(Icons.shopping_cart, color: Colors.black, size: 24),
+                      SizedBox(width: 10),
+                     
+                      SizedBox(width: 10),
                       Text(
                         'Add to Cart',
                         style: TextStyle(fontSize: 18, color: Colors.black),

@@ -1,9 +1,11 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: file_names, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
-
 class ShoppingCart extends StatefulWidget {
-  const ShoppingCart({super.key});
+  final CartItemData? itemToAdd; // Accept an optional CartItemData to add to the cart
+
+  const ShoppingCart({super.key, this.itemToAdd});
 
   @override
   _ShoppingCartState createState() => _ShoppingCartState();
@@ -11,10 +13,34 @@ class ShoppingCart extends StatefulWidget {
 
 class _ShoppingCartState extends State<ShoppingCart> {
   final List<CartItemData> _cartItems = [
-    CartItemData("assets/1.jpeg", 'Alice in Wonderland', 59.99, 1),
     CartItemData("assets/6.jpeg", 'A Crown Of Wishes', 55.99, 2),
     CartItemData("assets/7.jpg", 'Harry Potter', 75.99, 1),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    // Add the item passed from ProductDetails to the cart if it exists
+    if (widget.itemToAdd != null) {
+      addItem(widget.itemToAdd!);
+    }
+  }
+
+  // Method to add a new item to the cart
+  void addItem(CartItemData newItem) {
+    setState(() {
+      // Check if the item already exists in the cart, if so, just increase the quantity
+      var existingItem = _cartItems.firstWhere(
+        (item) => item.itemName == newItem.itemName,
+        orElse: () => CartItemData("", "", 0, 0),
+      );
+      if (existingItem.itemName.isNotEmpty) {
+        existingItem.quantity += newItem.quantity;
+      } else {
+        _cartItems.add(newItem);
+      }
+    });
+  }
 
   double get totalPrice => _cartItems.fold(0, (total, item) => total + (item.itemPrice * item.quantity));
 
@@ -42,7 +68,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
             const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
@@ -116,13 +141,12 @@ class CartItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Adjusted image size for book cover proportions (tall and narrow)
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(
+            child: Image.asset(
               item.imageUrl,
-              width: 80, // Narrow width for book cover
-              height: 120, // Taller height for book cover
+              width: 80,
+              height: 120,
               fit: BoxFit.cover,
             ),
           ),

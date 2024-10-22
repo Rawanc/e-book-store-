@@ -12,98 +12,98 @@ class Profile extends StatelessWidget {
         title: Text('Profile'),
         backgroundColor: Colors.lightGreen[300],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-             CircleAvatar(
-              radius: 50, 
-              backgroundColor: Colors.grey[200],   
-              backgroundImage: AssetImage("assets/18.png"),
-              child: ClipOval(
-                child: Image.asset(
-                  "assets/18.png",
-                  fit: BoxFit.cover, 
-                  width: 100, 
-                  height: 100,         
-                )    
-              )    
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'First Name',
-                border: OutlineInputBorder(), 
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              CircleAvatar(
+                  radius: 50,
+                  child: ClipOval(
+                      child: Image.asset(
+                    "assets/18.png",
+                    fit: BoxFit.cover, // لضمان أن الصورة تغطي المساحة بالكامل
+                    width: 100, // ضبط العرض ليكون نفس نصف القطر
+                    height: 100, // ضبط الارتفاع ليكون نفس نصف القطر
+                  ))),
+              SizedBox(height: 20),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'First Name',
+                  border: OutlineInputBorder(),
+                ),
+                controller: TextEditingController(text: 'Sarah'),
               ),
-               controller: TextEditingController(text: 'Sarah'),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Last Name',
-                border: OutlineInputBorder(),
+              SizedBox(height: 10),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Last Name',
+                  border: OutlineInputBorder(),
+                ),
+                controller: TextEditingController(text: 'Ahmed'),
               ),
-               controller: TextEditingController(text: 'Ahmed'),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
+              SizedBox(height: 10),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+                controller: TextEditingController(text: 'sarahahmed@gmail.com'),
+                keyboardType: TextInputType.emailAddress,
               ),
-               controller: TextEditingController(text: 'SarahAhmed@gmail.com'),
-              keyboardType: TextInputType.emailAddress,
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Phone Number',
-                border: OutlineInputBorder(),
+              SizedBox(height: 10),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Phone Number',
+                  border: OutlineInputBorder(),
+                ),
+                controller: TextEditingController(text: '+9665987889999'),
+                keyboardType: TextInputType.phone,
               ),
-               controller: TextEditingController(text: '+9665987889999'),
-              keyboardType: TextInputType.phone,
-            ),
-            SizedBox(height: 10),
-            DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                labelText: 'Preferred Language',
-                border: OutlineInputBorder(),
+              SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                  labelText: 'Preferred Language',
+                  border: OutlineInputBorder(),
+                ),
+                items: <String>['English', 'العربية'].map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {},
               ),
-              items: <String>['English', 'Arabic']
-                  .map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {},
-            ),
-            SizedBox(height: 10),
-            DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                labelText: 'Gender',
-                border: OutlineInputBorder(),
+              SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                  labelText: 'Gender',
+                  border: OutlineInputBorder(),
+                ),
+                items: <String>['Female', 'Male'].map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {},
               ),
-              items: <String>['Male', 'Female']
-                  .map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {},
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Handle save action
-              },
-              child: Text('Save'),
-            ),
-          ],
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Handle save action
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightGreen[300],
+                ),
+                child: Text('Save'),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
 

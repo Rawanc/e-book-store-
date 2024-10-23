@@ -1,20 +1,16 @@
+// ignore_for_file: file_names
 
-// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/shoppingCart.dart';
+import 'package:flutter_application_1/pages/wishlist.dart';
+import 'package:flutter_application_1/pages/wishlisTItem.dart'; // Update the import path
+
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Create the product data that you want to add to the cart
-    final CartItemData product = CartItemData(
-      "assets/1.jpeg", // Image path for Alice in Wonderland
-      "Alice in Wonderland", // Product name
-      59.99, // Product price
-      1, // Quantity
-    );
+    final book = WishlistItemData("assets/1.jpeg", 'Alice in Wonderland', 59.99);
 
     return Scaffold(
       appBar: AppBar(
@@ -33,7 +29,7 @@ class ProductDetails extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: Image.asset(
-                    "assets/1.jpeg",
+                    book.imageUrl,
                     fit: BoxFit.cover,
                     height: 300,
                   ),
@@ -41,14 +37,13 @@ class ProductDetails extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                'Alice in Wonderland',
+                book.itemName,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                   color: Colors.green[900],
                 ),
               ),
-              
               const SizedBox(height: 10),
               const Row(
                 children: [
@@ -66,7 +61,7 @@ class ProductDetails extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                'SAR 59.99',
+                'SAR ${book.itemPrice.toStringAsFixed(2)}',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.green[800],
@@ -88,56 +83,9 @@ class ProductDetails extends StatelessWidget {
                 'a whimsical world filled with peculiar creatures and adventures.',
                 style: TextStyle(fontSize: 18),
               ),
-              const SizedBox(height: 20),
-
-
-              // Product Details - Updated to match requested format without box
-              const Row(
-                children: [
-                  Icon(Icons.child_care, size: 18), // Reading age icon
-                  SizedBox(width: 10), // Space between icon and text
-                  Text(
-                    '7+ years',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: const [
-                  Icon(Icons.book, size: 18), // Print length icon
-                  SizedBox(width: 10), // Space between icon and text
-                  Text(
-                    '101 pages',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: const [
-                  Icon(Icons.language, size: 18), // Language icon
-                  SizedBox(width: 10), // Space between icon and text
-                  Text(
-                    'English',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: const [
-                  Icon(Icons.aspect_ratio, size: 18), // Dimensions icon
-                  SizedBox(width: 10), // Space between icon and text
-                  Text(
-                    '6 x 0.23 x 9 inches',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ],
-              ),
               const SizedBox(height: 30),
-              
-              // Add to cart button
+
+              // Add to Wishlist button
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -148,23 +96,23 @@ class ProductDetails extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    // Navigate to ShoppingCart and pass the product information
+                    // Navigate to Wishlist and add the book
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ShoppingCart(itemToAdd: product),
+                        builder: (context) => Wishlist(
+                          initialWishlist: [book], // Pass this book to Wishlist
+                        ),
                       ),
                     );
                   },
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.shopping_cart, color: Colors.black, size: 24),
-                      SizedBox(width: 10),
-                     
+                      Icon(Icons.favorite, color: Colors.black, size: 24),
                       SizedBox(width: 10),
                       Text(
-                        'Add to Cart',
+                        'Add to Wishlist',
                         style: TextStyle(fontSize: 18, color: Colors.black),
                       ),
                     ],

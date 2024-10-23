@@ -13,7 +13,7 @@ class Homepage extends StatelessWidget {
         elevation: 15,
         title: _buildSearchBar(),
         centerTitle: true,
-        leading: _buildIconButton(context, "/shoppingcart", Icons.shopping_cart),
+        leading: _buildIconButton(context, "/wishlist", Icons.favorite),
         actions: [
           _buildIconButton(context, "/profile", Icons.person),
           _buildIconButton(context, "/signin", Icons.login),

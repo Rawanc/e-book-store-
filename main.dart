@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
+import 'package:flutter_application_1/pages/wishlist.dart';
 import 'package:flutter_application_1/pages/homepage.dart';
 import 'package:flutter_application_1/pages/productDetails.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/setting.dart';
-import 'package:flutter_application_1/pages/shoppingCart.dart';
 import 'package:flutter_application_1/pages/signin.dart';
 import 'package:flutter_application_1/providers/settings_provider.dart';
 
 void main() {
-  runApp(
+ runApp(
     ChangeNotifierProvider(
       create: (context) => SettingsProvider(),
       child: const EbookStore(),
@@ -35,8 +34,8 @@ class EbookStore extends StatelessWidget {
             '/signin': (context) => const SignIn(),
             '/homepage': (context) => const Homepage(),
             '/setting': (context) => const Settings(),
-            '/profile': (context) => Profile(),
-            '/shoppingcart': (context) => const ShoppingCart(),
+            '/profile': (context) => const Profile(),
+            '/shoppingcart': (context) => const Wishlist(initialWishlist: [],),
             '/productdetails': (context) => const ProductDetails(),
           },
         );

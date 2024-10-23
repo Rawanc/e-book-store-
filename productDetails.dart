@@ -1,9 +1,6 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/wishlist.dart';
+import 'package:flutter_application_1/pages/whishlis.dart';
 import 'package:flutter_application_1/pages/wishlisTItem.dart'; // Update the import path
-
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -83,40 +80,91 @@ class ProductDetails extends StatelessWidget {
                 'a whimsical world filled with peculiar creatures and adventures.',
                 style: TextStyle(fontSize: 18),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 10),
 
-              // Add to Wishlist button
-              Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightGreen[400],
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
+              const Row(
+                children: [
+                  Icon(Icons.child_care, size: 18), // Reading age icon
+                  SizedBox(width: 10), // Space between icon and text
+                  Text(
+                    '7+ years',
+                    style: TextStyle(fontSize: 14),
                   ),
-                  onPressed: () {
-                    // Navigate to Wishlist and add the book
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Wishlist(
-                          initialWishlist: [book], // Pass this book to Wishlist
+                ],
+              ),
+              const SizedBox(height: 10),
+              const Row(
+                children: [
+                  Icon(Icons.book, size: 18), // Print length icon
+                  SizedBox(width: 10), // Space between icon and text
+                  Text(
+                    '101 pages',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              const Row(
+                children: [
+                  Icon(Icons.language, size: 18), // Language icon
+                  SizedBox(width: 10), // Space between icon and text
+                  Text(
+                    'English',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.lightGreen[400],
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                    );
-                  },
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.favorite, color: Colors.black, size: 24),
-                      SizedBox(width: 10),
-                      Text(
-                        'Add to Wishlist',
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      onPressed: () {
+                        // Navigate to Wishlist and add the book
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Wishlist(
+                              initialWishlist: [book], // Pass this book to Wishlist
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.favorite, color: Colors.black, size: 24),
+                          SizedBox(width: 10),
+                          Text(
+                            'Add to Wishlist',
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(width: 20), // Space between the two buttons
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.lightGreen[400],
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      ),
+                      onPressed: () {},
+                      child: const Row(
+                        children: [
+                          Icon(Icons.shopping_cart, color: Colors.black, size: 24),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

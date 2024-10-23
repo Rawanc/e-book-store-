@@ -35,7 +35,7 @@ class EbookStore extends StatelessWidget {
             '/homepage': (context) => const Homepage(),
             '/setting': (context) => const Settings(),
             '/profile': (context) => const Profile(),
-            '/shoppingcart': (context) => const Wishlist(initialWishlist: [],),
+            '/wishlist': (context) => const Wishlist(initialWishlist: [],),
             '/productdetails': (context) => const ProductDetails(),
           },
         );

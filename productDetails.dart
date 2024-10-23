@@ -12,7 +12,6 @@ class ProductDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightGreen[300],
-        elevation: 15,
         title: const Text('Alice in Wonderland'),
         centerTitle: true,
       ),
@@ -21,27 +20,31 @@ class ProductDetails extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: [ 
               Center(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: Image.asset(
-                    book.imageUrl,
+                    "assets/1.jpeg",
                     fit: BoxFit.cover,
                     height: 300,
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+
+              const SizedBox(height: 20),     
+
               Text(
-                book.itemName,
+                'Alice in Wonderland',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                   color: Colors.green[900],
                 ),
               ),
+
               const SizedBox(height: 10),
+
               const Row(
                 children: [
                   Icon(Icons.star, color: Colors.yellow, size: 18),
@@ -56,15 +59,19 @@ class ProductDetails extends StatelessWidget {
                   ),
                 ],
               ),
+
               const SizedBox(height: 10),
+              
               Text(
-                'SAR ${book.itemPrice.toStringAsFixed(2)}',
+                'SAR 59.99',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.green[800],
                 ),
               ),
+
               const SizedBox(height: 20),
+
               Text(
                 'Description',
                 style: TextStyle(
@@ -73,49 +80,19 @@ class ProductDetails extends StatelessWidget {
                   color: Colors.green[900],
                 ),
               ),
+
               const SizedBox(height: 10),
+
               const Text(
                 'Alice in Wonderland is a timeless fantasy novel written by Lewis Carroll. '
                 'It tells the tale of a young girl, Alice, who falls down a rabbit hole into '
                 'a whimsical world filled with peculiar creatures and adventures.',
                 style: TextStyle(fontSize: 18),
               ),
-              const SizedBox(height: 10),
 
-              const Row(
-                children: [
-                  Icon(Icons.child_care, size: 18), // Reading age icon
-                  SizedBox(width: 10), // Space between icon and text
-                  Text(
-                    '7+ years',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              const Row(
-                children: [
-                  Icon(Icons.book, size: 18), // Print length icon
-                  SizedBox(width: 10), // Space between icon and text
-                  Text(
-                    '101 pages',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              const Row(
-                children: [
-                  Icon(Icons.language, size: 18), // Language icon
-                  SizedBox(width: 10), // Space between icon and text
-                  Text(
-                    'English',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ],
-              ),
               const SizedBox(height: 30),
               
+              // for favorite icon and shopping_cart icon
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -130,17 +107,16 @@ class ProductDetails extends StatelessWidget {
                       ),
                       onPressed: () {
                         // Navigate to Wishlist and add the book
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Wishlist(
-                              initialWishlist: [book], // Pass this book to Wishlist
+                        Navigator.push( 
+                          context, 
+                          MaterialPageRoute( 
+                            builder: (context) => Wishlist( 
+                              initialWishlist: [book], //Pass this book to Wishlist
                             ),
                           ),
                         );
                       },
                       child: const Row(
-                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(Icons.favorite, color: Colors.black, size: 24),
                           SizedBox(width: 10),
@@ -151,7 +127,9 @@ class ProductDetails extends StatelessWidget {
                         ],
                       ),
                     ),
+
                     const SizedBox(width: 20), // Space between the two buttons
+                    
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.lightGreen[400],

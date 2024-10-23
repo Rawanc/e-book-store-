@@ -19,13 +19,12 @@ class Profile extends StatelessWidget {
             children: [
               CircleAvatar(
                   radius: 50,
-                  child: ClipOval(
                       child: Image.asset(
                     "assets/18.png",
                     fit: BoxFit.cover, // لضمان أن الصورة تغطي المساحة بالكامل
                     width: 100, // ضبط العرض ليكون نفس نصف القطر
                     height: 100, // ضبط الارتفاع ليكون نفس نصف القطر
-                  ))),
+                  )),
               SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
@@ -105,5 +104,6 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
 
 

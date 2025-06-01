@@ -39,9 +39,5 @@ This is a Flutter mobile application designed for browsing, viewing, and managin
 - This application is currently front-end only and does not include backend or database integration.
 - The purpose of the app is to demonstrate a working UI and client-side logic for an e-book store concept.
 
-## Getting Started
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Rawanc/e-book-store-.git
+## License
+This project is provided for educational purposes. No specific license has been attached.

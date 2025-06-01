@@ -33,10 +33,6 @@ This is a Flutter mobile application designed for browsing, viewing, and managin
 - Material Design for user interface
 - Git and GitHub for version control
 
-## Contributors
-
-- Rawan Alrehaili (https://github.com/Rawanc)  
-- Bshayer Farhan (https://github.com/BshayerFarhan)
 
 ## Notes
 

@@ -1,4 +1,4 @@
-# E-Book Store App
+# E-Book Store Mobile Application
 
 This is a Flutter mobile application designed for browsing, viewing, and managing e-books. The app includes core features such as user authentication, product details display, profile management, and a wishlist system. It is built using Dart and follows clean code and modular architecture practices.
 
